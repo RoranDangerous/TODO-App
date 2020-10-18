@@ -16,13 +16,9 @@ const mockTasks = [
 ]
 
 test('Displays message when there is no tasks', () => {
-  const { getByText } = render(
-    <TaskDetails tasks={[]} onChange={() => {}}/>
-  )
+  const { getByText } = render(<TaskDetails tasks={[]} onChange={() => {}} />)
 
-  const message = getByText(
-    'Add task above and it will appear in this table'
-  )
+  const message = getByText('Add task above and it will appear in this table')
 
   expect(message).toBeInTheDocument()
 })

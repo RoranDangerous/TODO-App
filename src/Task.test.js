@@ -11,18 +11,14 @@ const mockTask = {
 }
 
 test('Displays task message', () => {
-  const { getByText } = render(
-    <Task {...mockTask} onChange={() => {}}/>
-  )
+  const { getByText } = render(<Task {...mockTask} onChange={() => {}} />)
 
   expect(getByText(mockTask.message)).toBeInTheDocument()
   expect(getByText(mockTask.created_on)).toBeInTheDocument()
 })
 
 test('Displays styles correctly', () => {
-  const { getByText } = render(
-    <Task { ...mockTask} onChange={() => {}} />
-  )
+  const { getByText } = render(<Task {...mockTask} onChange={() => {}} />)
 
   const message = getByText(mockTask.message)
   expect(message).toBeInTheDocument()
@@ -31,10 +27,8 @@ test('Displays styles correctly', () => {
 
 test('Clicking on the completed icon updated completed calls onChange', () => {
   const onChange = jest.fn()
-  const component = mount(
-    <Task { ...mockTask} onChange={onChange} />
-  )
-  expect(component).toMatchSnapshot();
+  const component = mount(<Task {...mockTask} onChange={onChange} />)
+  expect(component).toMatchSnapshot()
 
   const completedIcon = component.find('svg.MuiSvgIcon-root').first()
   completedIcon.simulate('click')
@@ -45,19 +39,19 @@ test('Clicking on the completed icon updated completed calls onChange', () => {
 
 test('Task message editing', () => {
   const onChange = jest.fn()
-  const component = mount(
-    <Task { ...mockTask} onChange={onChange} />
-  )
-  expect(component).toMatchSnapshot();
+  const component = mount(<Task {...mockTask} onChange={onChange} />)
+  expect(component).toMatchSnapshot()
 
   const editIcon = component.find('svg.MuiSvgIcon-root').last()
   editIcon.simulate('click')
 
   const inputComponent = component.find('input')
   const new_message = 'Hello new task'
-  inputComponent.simulate('change', { target: { value: new_message }})
-  inputComponent.simulate('keydown', { keyCode: 13})
+  inputComponent.simulate('change', { target: { value: new_message } })
+  inputComponent.simulate('keydown', { keyCode: 13 })
 
   expect(onChange).toHaveBeenCalledTimes(1)
-  expect(onChange).toHaveBeenCalledWith(mockTask.message, { message: new_message })
+  expect(onChange).toHaveBeenCalledWith(mockTask.message, {
+    message: new_message
+  })
 })

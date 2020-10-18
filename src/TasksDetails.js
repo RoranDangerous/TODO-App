@@ -13,7 +13,6 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
 `
 
-
 const CenterMessage = styled.p`
   text-align: center;
 `
@@ -24,7 +23,9 @@ const TasksDetails = ({ tasks, onChange }) => (
       <h2>Tasks</h2>
     </HeaderContainer>
 
-    {tasks.map((task, index) => <Task key={`${task.message}-${index}`} {...task} onChange={onChange}/>)}
+    {tasks.map((task, index) => (
+      <Task key={`${task.message}-${index}`} {...task} onChange={onChange} />
+    ))}
 
     {!tasks.length && (
       <CenterMessage>

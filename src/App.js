@@ -21,8 +21,11 @@ function App() {
   const { tasks, addTask, updateTask } = useTask()
   const [error, setError] = React.useState()
 
-  const onSubmit = task => {
-    const errorMsg = addTask({ message: task, created_on: (new Date()).toLocaleString() });
+  const onSubmit = (task) => {
+    const errorMsg = addTask({
+      message: task,
+      created_on: new Date().toLocaleString()
+    })
 
     setError(errorMsg)
   }
@@ -36,12 +39,12 @@ function App() {
 
   return (
     <Container>
-      {error && <Alert severity='error'>{error}</Alert>}
+      {error && <Alert severity="error">{error}</Alert>}
       <Header>TODO List</Header>
       <TaskInput onSubmit={onSubmit} />
       <TasksDetails tasks={tasks} onChange={handleChange} />
     </Container>
-  );
+  )
 }
 
-export default App;
+export default App

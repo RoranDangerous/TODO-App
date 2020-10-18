@@ -48,9 +48,9 @@ const TaskInput = (props) => {
           label="Task Description"
           variant="outlined"
           value={value}
-          onChange={e => setValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
           onKeyDown={onKeyDown}
-          style={{ width: "100%" }}
+          style={{ width: '100%' }}
         />
       </InputContainer>
       <Button
@@ -58,9 +58,7 @@ const TaskInput = (props) => {
         variant="outlined"
         color="primary"
         size="large"
-        startIcon={
-          <AddIcon />
-        }>
+        startIcon={<AddIcon />}>
         Add
       </Button>
     </Form>
